@@ -1,6 +1,7 @@
-FROM node:10
-WORKDIR /usr/app
-COPY . .
+FROM node:14-alpine
+WORKDIR /app
+COPY package.json package-lock.json /app/
 RUN npm install
-EXPOSE 9090
-CMD ["node","app.js"]
+COPY . /app
+CMD ["npm", "start"]
+
